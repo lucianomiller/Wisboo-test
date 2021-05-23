@@ -1,0 +1,1 @@
+web: git npm run start:prod
