@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Post, Query, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, NotFoundException, Post, Query, Res } from '@nestjs/common';
 import { CreateImageDTO } from "./dto/image.dto";
 import { ImagesService } from "./images.service";
 
@@ -9,8 +9,9 @@ export class ImagesController {
 
     // Add Image: /images/
     @Post('/')
-    async createPost(@Res() res, @Body() createConsultDTO: CreateImageDTO){
-        const image= await this.imagesServices.createImage(createConsultDTO)
+    async createPost(@Res() res, @Body() createImageDTO: CreateImageDTO){
+        const image= await this.imagesServices.createImage(createImageDTO)
+        if (!image) throw new NotFoundException('Imagen repetida');
         return res.status(HttpStatus.OK).json({
             message:"Imagen guardada!",
             image
@@ -35,5 +36,15 @@ export class ImagesController {
             message:"Imagenes encontradas",
             images
         })   
+    }
+
+    @Delete('/')
+    async deleteProduct(@Res() res, @Body() imageID) {
+        const image = await this.imagesServices.deleteImage(imageID._id);
+        if (!image) throw new NotFoundException('Imagen no encontrada!');
+        return res.status(HttpStatus.OK).json({
+            message: 'Imagen Eliminada',
+            image
+        });
     }
 }

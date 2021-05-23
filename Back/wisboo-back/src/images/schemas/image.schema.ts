@@ -3,6 +3,10 @@ import { Schema } from "mongoose";
 export const ImageSchema = new Schema({
 
     url: String,
+    _id:{
+        type:Number,
+        unique:true
+    }
     /* name: String,
     lastname: String,
     email: {
