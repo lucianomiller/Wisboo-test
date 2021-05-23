@@ -51,7 +51,7 @@ function Images() {
             <div class="container-fluid mt-3" style={{maxWidth:"50% "}} >
                 <form class="d-flex" onSubmit={handleSubmit}>
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" onChange={handleaOnChange} value={search}/>
-                <button class="btn " style={{backgroundColor:"#a23bad"}} type="submit">Search</button>
+                <button class="btn btn-dark" style={{backgroundColor:"#a23bad"}} type="submit">Search</button>
                 </form>
             </div>
                 <InfiniteScroll

@@ -19,8 +19,8 @@ export class ImagesController {
 
     //Get images: /images/search?query&page&size
     @Get('/search')
-    async getImages(@Res() res, @Query('query') query, @Query('page') page, @Query('size') size) {
-        const images = await this.imagesServices.getImages(query, page, size)
+    async getImages(@Res() res, @Query('query') query, @Query('page') page, @Query('size') size:string) {
+        const images = await this.imagesServices.getImages(query, page, parseInt(size,10))
         return res.status(HttpStatus.OK).json({
             message:"Imagenes encontradas",
             images
@@ -30,7 +30,7 @@ export class ImagesController {
     //Get images: /images?page&size
     @Get('/')
     async getMyImages(@Res() res, @Query('page') page, @Query('size') size) {
-        const images = await this.imagesServices.getMyImages(page, size)
+        const images = await this.imagesServices.getMyImages(page, parseInt(size,10))
         return res.status(HttpStatus.OK).json({
             message:"Imagenes encontradas",
             images

@@ -15,7 +15,7 @@ export class ImagesService {
         return  image.save()
     }
 
-    async getImages(query:string, page:string, size:string): Promise<AxiosResponse<any>>{        
+    async getImages(query:string, page:string, size:number): Promise<AxiosResponse<any>>{        
         const images = await axios.get(`https://api.unsplash.com/search/photos?query=${query}&page=${page}&per_page=${size}&client_id=afcDrMZ0wW1lGV6dLLpKavGrFztxceOfZCq-nKpGu9I`)
         return images.data
     }
@@ -25,7 +25,7 @@ export class ImagesService {
             const images = await this.imagesModel.find().limit(size)
             return images
         }
-        const images = await this.imagesModel.find().skip(size*(page-1))
+        const images = await this.imagesModel.find().skip(size*(page-1)).limit(size)
         return images
     }
 }

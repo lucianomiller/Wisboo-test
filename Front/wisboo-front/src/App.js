@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Images from './components/Images';
 import  MyImages  from "./components/MyImages";
 
-{/* <img src={logo} className="App-logo" alt="logo" /> */}
+
 function App() {
   return (
     <>

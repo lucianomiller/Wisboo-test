@@ -17,7 +17,7 @@ function MyImages() {
         axios
         .get(`http://localhost:3001/images?page=${page}&size=12`)
         .then(res => {
-            if(res.data.message && !res.data.images) setBack(false)
+            if(res.data.message && !res.data.images.length) setBack(false)
             setImages([...images, ...res.data.images]);  
             console.log(res.data, page)
             setPage(page+1)
