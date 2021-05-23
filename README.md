@@ -5,7 +5,7 @@ Explicación de lo realizado:
 Back:
 Se creó una api con NestJs que contiene 4 rutas para manejar las consultas (agregue un delete al test). La cual almacena los datos en MongoDB Atlas.
 Se realizo el deploy en Heroku : https://wisboo-test.herokuapp.com/
-Para tener todas las consultas :https://meaning-tech.herokuapp.com/images
+Para tener todas las consultas :https://wisboo-test.herokuapp.com/images
 
 Funcionamiento: realizo solicitud de imagenes a Unsplash y los mando al fron segun lo solicitado. Estas imagenes pueden ser guardadas en la base de datos solo si la id de la imagen no se encuantra en la base de datos. Luego se puede solicitar las url de las imagenes almacenadas y eliminarlas.
 
