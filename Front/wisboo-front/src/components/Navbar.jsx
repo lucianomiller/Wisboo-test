@@ -14,8 +14,8 @@ function Navbar() {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav" style={{marginLeft:"75%"}}>                        
-                        <Link to={"/"} style={{textDecoration:"none"}}><a class="nav-link active" href="#">Search</a></Link>
-                        <Link to={"/myimages"} style={{textDecoration:"none"}}><a class="nav-link active" href="#">My Images</a></Link>
+                        <Link to={"/"} style={{textDecoration:"none",fontSize:"30px", marginRight:"20px"}}><a class="nav-link " href="#">Search</a></Link>
+                        <Link to={"/myimages"} style={{textDecoration:"none",fontSize:"30px"}}><a class="nav-link " href="#">My Images</a></Link>
                         
                     </div>
                     </div>

@@ -40,7 +40,7 @@ export class ImagesController {
 
     @Delete('/')
     async deleteProduct(@Res() res, @Body() imageID) {
-        const image = await this.imagesServices.deleteImage(imageID._id);
+        const image = await this.imagesServices.deleteImage(imageID.id);
         if (!image) throw new NotFoundException('Imagen no encontrada!');
         return res.status(HttpStatus.OK).json({
             message: 'Imagen Eliminada',

@@ -11,7 +11,7 @@ export class ImagesService {
     constructor(@InjectModel('Images') private readonly imagesModel:Model<Images> ){} 
 
     async createImage(createImageDTO:CreateImageDTO):Promise<Images>{
-        const find = await this.imagesModel.findById(createImageDTO._id)
+        const find = await this.imagesModel.findOne({id:createImageDTO.id})
         if(find) return 
         const image= new this.imagesModel(createImageDTO)
         return  image.save()
@@ -31,8 +31,8 @@ export class ImagesService {
         return images
     }
 
-    async deleteImage(imageID:number):Promise<any>{
-        const deletedConsulta = await this.imagesModel.findByIdAndDelete(imageID)
-        return deletedConsulta
+    async deleteImage(imageID):Promise<any>{
+        const deletedImage = await this.imagesModel.findOneAndDelete(imageID)
+        return deletedImage
     }
 }

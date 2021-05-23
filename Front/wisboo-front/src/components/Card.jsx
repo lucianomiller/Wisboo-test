@@ -1,15 +1,30 @@
 import "./card.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
 
 export default function Card({  background_image,  id }) {  
 
     const handleSave =()=>{
         axios.
-            post(`http://localhost:3001/images/`,{url:background_image})
+            post(`http://localhost:3001/images/`,{url:background_image, id})
             .then((res)=>{
                 console.log(res.data)
+                
             })
+            
+          store.addNotification({
+            //title: 'Dropbox',
+            message: 'Image Saved!',
+            type: 'default',                         // 'default', 'success', 'info', 'warning'
+            container: 'top-left',                // where to position the notifications
+            animationIn: ["animated", "fadeIn"],     // animate.css classes that's applied
+            animationOut: ["animated", "fadeOut"],   // animate.css classes that's applied
+            dismiss: {
+              duration: 2000
+            }
+          })
+        
     }
     
     return (

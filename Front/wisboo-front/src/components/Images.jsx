@@ -4,6 +4,10 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import  Card  from "./Card";
 import Loader from './Loader';
 import "../App.css"
+import Scroll from './Scroll'
+
+
+
 function Images() {
 
     const [images, setImages] = useState([]);
@@ -29,8 +33,7 @@ function Images() {
             setPage(page+1)
         })    
     }
-    const handleaOnChange = (e) => {
-        
+    const handleaOnChange = (e) => {        
         setSearch(e.target.value);
         console.log(search)
     };      
@@ -41,10 +44,11 @@ function Images() {
         axios
         .get(`http://localhost:3001/images/search?query=${search}&page=${1}&size=12`)
         .then(res => {
-             setImages([ ...res.data.images.results]); 
+             setImages([...res.data.images.results]); 
              setPage(2)
         })
     }
+    
     
     return (
         <div>
@@ -54,6 +58,7 @@ function Images() {
                 <button class="btn btn-dark" style={{backgroundColor:"#a23bad"}} type="submit">Search</button>
                 </form>
             </div>
+            <Scroll showBelow={250}/>
                 <InfiniteScroll
                     dataLength={images.length}
                     next={fetchImages}
@@ -62,7 +67,7 @@ function Images() {
                     >
             {images.length?(<div className="page-content ">                    
                     {images.map(image => (
-                        <Card background_image={image.urls.small} id={image.id} key={image.id}/>
+                        <Card background_image={image.urls.small} id={image.id} key={image.id} />
                         ))}                    
              </div>):(
                  <div style={{height:"100rem"}}>                        
