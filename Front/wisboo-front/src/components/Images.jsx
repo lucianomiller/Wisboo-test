@@ -19,8 +19,7 @@ function Images() {
         axios
         .get(`http://localhost:3001/images/search?query=random&page=1&size=12`)
         .then(res => {
-             setImages([...images, ...res.data.images.results]); 
-            console.log(res.data)
+             setImages([...images, ...res.data.images.results]);             
             setPage(page+1)
         })                 
     }, [])
@@ -28,19 +27,16 @@ function Images() {
         axios
         .get(`http://localhost:3001/images/search?query=${query}&page=${page}&size=12`)
         .then(res => {
-             setImages([...images, ...res.data.images.results]); 
-            console.log(res.data)
+             setImages([...images, ...res.data.images.results]);             
             setPage(page+1)
         })    
     }
     const handleaOnChange = (e) => {        
-        setSearch(e.target.value);
-        console.log(search)
+        setSearch(e.target.value);        
     };      
     const handleSubmit = (e)=>{
         e.preventDefault()         
-        setQuery(search)
-        console.log(search)        
+        setQuery(search)                
         axios
         .get(`http://localhost:3001/images/search?query=${search}&page=${1}&size=12`)
         .then(res => {

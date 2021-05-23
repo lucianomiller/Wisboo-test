@@ -9,7 +9,7 @@ export default function Card({  background_image,  id }) {
         axios.
             post(`http://localhost:3001/images/`,{url:background_image, id})
             .then((res)=>{
-                console.log(res.data)
+                //console.log(res.data)
                 
             })
             

@@ -22,20 +22,16 @@ function MyImages() {
         .get(`http://localhost:3001/images?page=${page}&size=12`)
         .then(res => {
             if(res.data.message && res.data.images.length<12) setBack(false)
-            setImages([...images, ...res.data.images]);  
-            console.log(res.data, page)
+            setImages([...images, ...res.data.images]);              
             setPage(page+1)            
         })    
     }
-    const deleteImage = (id) => { 
-        console.log(id)
+    const deleteImage = (id) => {         
         axios.
             delete(`http://localhost:3001/images`,{id})
-            .then((res)=>{
-                console.log(res.data)
+            .then((res)=>{                
                 if(res.data.image){
-                    setImages( images.filter(Im=>Im.id!==id))   
-                    console.log("borrado", images)   
+                    setImages( images.filter(Im=>Im.id!==id))                       
                     if(!images.length) setBack(false)
                 }
             })
@@ -51,7 +47,7 @@ function MyImages() {
                 }
               })        
     }
-    console.log("images",images)
+    
     
     return (
         <div style={{minHeight:"60rem"}}>     
